@@ -2,9 +2,11 @@
 require 'functions.php';
 //get id from url
 $id = $_GET['id'];
+echo "<br>";
+var_dump($_GET['id']);
 
 $mahasiswa = query("SELECT * FROM mahasiswa WHERE id = $id");
-var_dump($mahasiswa);
+
 
 ?>
 
@@ -25,7 +27,9 @@ var_dump($mahasiswa);
     <li>NIM : <?= $mahasiswa['nim']; ?></li>
     <li>Email : <?= $mahasiswa['email']; ?></li>
     <li>Jurusan : <?= $mahasiswa['jurusan']; ?></li>
-    <li><a href="">Ubah</a> | <a href="">Hapus</a></li>
+    <li><a href="ubah.php?id=<?= $mahasiswa['id']; ?>">Ubah</a> |
+      <a href="hapus.php?id=<?= $mahasiswa['id']; ?>" onclick="return confirm ('apakah anda yakin?');">Hapus</a>
+    </li>
     <li><a href="index.php">Back to Home</a></li>
   </ul>
 </body>
